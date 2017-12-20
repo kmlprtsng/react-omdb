@@ -3,10 +3,16 @@ import React, { Component } from "react";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import Search from "./Search";
+import SearchResults from "./SearchResults";
 
 class App extends Component {
   render() {
-    return <Search />;
+    return (
+      <div>
+        <Search />
+        <SearchResults />
+      </div>
+    );
   }
 }
 
