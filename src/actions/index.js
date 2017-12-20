@@ -11,6 +11,6 @@ export const fetchMovies = searchText => async dispatch => {
 
   dispatch({
     type: FETCH_MOVIES,
-    payload: res.data.Search
+    payload: res.data
   });
 };

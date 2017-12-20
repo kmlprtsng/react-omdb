@@ -4,7 +4,11 @@ export default function(state = null, action) {
   console.log(action);
   switch (action.type) {
     case FETCH_MOVIES:
-      return action.payload || false;
+      if (action.payload.Error) {
+        return [];
+      }
+
+      return action.payload.Search;
     default:
       return state;
   }
