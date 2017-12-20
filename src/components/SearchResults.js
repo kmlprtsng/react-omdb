@@ -1,9 +1,29 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class SearchResults extends React.Component {
+  renderMovies(movies) {
+    return movies.map(movie => {
+      return <ul key={movie.imdbID}>{movie.Title}</ul>;
+    });
+  }
   render() {
-    return <div>No Movies Founds</div>;
+    const { movies } = this.props;
+
+    if (movies === null) {
+      return <div />;
+    }
+
+    if (movies.length === 0) {
+      return <div>No movies found</div>;
+    }
+
+    return <ul>{this.renderMovies(movies)}</ul>;
   }
 }
 
-export default SearchResults;
+function mapStateToProps({ movies }) {
+  return { movies };
+}
+
+export default connect(mapStateToProps)(SearchResults);
